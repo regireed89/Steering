@@ -10,6 +10,7 @@ class Agent(object):
         self.velocity = (0, 0)
         self.maxvelocity = 10
         self.force = (0, 0)
+        self.heading = (0, 0)
 
     def seek(self, target):
         '''seek'''
@@ -17,8 +18,8 @@ class Agent(object):
         vectormath.normalize(dis)
         for i in dis:
             i * self.maxvelocity
-        self.velocity = (dis[0] - self.velocity[0], dis[1] - self.velocity[1])
+        return self.velocity = (dis[0] - self.velocity[0], dis[1] - self.velocity[1])
 
-
-
+    def add_force(self):
+        
 
