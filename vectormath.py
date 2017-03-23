@@ -12,4 +12,4 @@ def normalize(vector):
 
 def distance(vector1, vector2):
     '''distance'''
-    return (vector1[0] - vector2[1], vector1[1] - vector2[1])
+    return (vector1[0] - vector2[0], vector1[1] - vector2[1])
