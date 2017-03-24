@@ -1,26 +1,28 @@
 '''Agent class'''
 import vectormath
+from vectormath import Vector2
 
 
 class Agent(object):
     '''Agent'''
 
     def __init__(self):
-        self.position = (0, 0)
-        self.velocity = (0, 0)
+        self.position = Vector2(0, 0)
+        self.velocity = Vector2(0, 0)
         self.maxvelocity = 10
-        self.force = (0, 0)
-        self.heading = (0, 0)
+        self.force = Vector2(0, 0)
+        self.heading = Vector2(0, 0)
 
     def seek(self, target):
         '''seek'''
-        dis = vectormath.distance(self.position, target.position)
-        vectormath.normalize(dis)
-        dis * self.maxvelocity
-        self.velocity = (dis[0] - self.velocity[0], dis[1] - self.velocity[1])
-        return self.velocity
+        distance = self.position.distance(target.position)
+        normdistance = distance.normalize()
+        scaledis = normdistance.scalarmult(self.maxvelocity)
+        return scaledis.sub_vectors(self.velocity)
 
     def add_force(self):
         '''force'''
         self.position = (self.position + self.velocity)
         self.velocity = (self.velocity + self.force)
+
+
