@@ -16,10 +16,11 @@ class Agent(object):
         '''seek'''
         dis = vectormath.distance(self.position, target.position)
         vectormath.normalize(dis)
-        for i in dis:
-            i * self.maxvelocity
-        return self.velocity = (dis[0] - self.velocity[0], dis[1] - self.velocity[1])
+        dis * self.maxvelocity
+        self.velocity = (dis[0] - self.velocity[0], dis[1] - self.velocity[1])
+        return self.velocity
 
     def add_force(self):
-        
-
+        '''force'''
+        self.position = (self.position + self.velocity)
+        self.velocity = (self.velocity + self.force)
