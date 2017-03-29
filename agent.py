@@ -24,5 +24,6 @@ class Agent(object):
         '''force'''
         self.position = (self.position + self.velocity)
         self.velocity = (self.velocity + self.force)
+        
 
 
