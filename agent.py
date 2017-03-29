@@ -9,7 +9,7 @@ class Agent(object):
     '''Agent'''
 
     def __init__(self):
-        self.position = pygame.mouse.get_pos()
+        self.position = Vector2(0, 0)
         self.velocity = Vector2(1, 0)
         self.maxvelocity = 10
         self.force = Vector2(0, 0)
@@ -31,6 +31,6 @@ class Agent(object):
         '''draw object'''
         points = [(100, 100), (100, 200), (200, 150), (100, 100)]
         pygame.draw.lines(screen, constants.GREEN, False, points, 1)
-        pygame.draw.circle(screen, constants.GREEN, self.position, 10, 0)
+        
 
 
