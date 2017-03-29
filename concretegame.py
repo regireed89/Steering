@@ -12,25 +12,10 @@ class ConcreteGame(GameTemplate):
     def __init__(self, name):
         '''need documentation'''
         super(ConcreteGame, self).__init__()
-        self.screen = pygame.display.set_mode(
-            (constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT))
-        while 1:
-            #clear the screen before drawing it again
-            self.screen.fill(0)
-            #draw the screen elements
-            self.screen.blit(self.screen, (100, 100))
-            #update the screen
-            pygame.display.flip()
-            # 8 - loop through the events
-            for event in pygame.event.get():
-                # check if the event is the X button
-                if event.type == pygame.QUIT:
-                    # if it is quit the game
-                    pygame.quit()
-                    exit(0)
+        self.surface = pygame.display.set_mode((constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT))
         self.name = name
         self.gameobjects = []
-        self.target = agent.Agent()
+            
 
     def addtobatch(self, gameobject):
         '''add gameobjects to this game'''
@@ -40,14 +25,17 @@ class ConcreteGame(GameTemplate):
         '''update this games logic'''
         if not super(ConcreteGame, self).update():
             return False
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:            
+                pygame.quit()            
         return True
+
 
     def draw(self):
         '''draw all gameobjects added to this game'''
         super(ConcreteGame, self).draw()
         for i in self.gameobjects:
-            pygame.draw.circle(self.screen, constants.GREEN, (400, 300, 10, 10), (100))
-            pygame.surface.Surface.blit(self.screen, (300, 600), None, 0)
+            i.draw(self.surface)
 
     def run(self):
         '''need documentation'''

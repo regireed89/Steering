@@ -1,14 +1,16 @@
 '''Agent class'''
 import vectormath
 from vectormath import Vector2
+import pygame
+import constants
 
 
 class Agent(object):
     '''Agent'''
 
     def __init__(self):
-        self.position = Vector2(0, 0)
-        self.velocity = Vector2(0, 0)
+        self.position = pygame.mouse.get_pos()
+        self.velocity = Vector2(1, 0)
         self.maxvelocity = 10
         self.force = Vector2(0, 0)
         self.heading = Vector2(0, 0)
@@ -22,8 +24,13 @@ class Agent(object):
 
     def add_force(self):
         '''force'''
-        self.position = (self.position + self.velocity)
-        self.velocity = (self.velocity + self.force)
-        
+        self.position = (self.position.add_vectors(self.velocity))
+        self.velocity = (self.velocity.add_vectors(self.force))
+
+    def draw(self, screen):
+        '''draw object'''
+        points = [(100, 100), (100, 200), (200, 150), (100, 100)]
+        pygame.draw.lines(screen, constants.GREEN, False, points, 1)
+        pygame.draw.circle(screen, constants.GREEN, self.position, 10, 0)
 
 

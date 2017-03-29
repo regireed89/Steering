@@ -7,7 +7,7 @@ import pygame
 
 def main():
     '''main execution func'''
-    game = ConcreteGame("bob")
+    game = ConcreteGame("the game")
     # make gameobjects to participate in game
     tom = agent.Agent()
     game.addtobatch(tom)
