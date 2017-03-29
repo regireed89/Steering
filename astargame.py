@@ -2,7 +2,6 @@
 import pygame
 from gametemplate import GameTemplate
 import agent
-import game
 
 
 class AstarGame(GameTemplate):

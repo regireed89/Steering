@@ -15,11 +15,11 @@ class ConcreteGame(GameTemplate):
         self.screen = pygame.display.set_mode(
             (constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT))
         while 1:
-            # 5 - clear the screen before drawing it again
+            #clear the screen before drawing it again
             self.screen.fill(0)
-            # 6 - draw the screen elements
+            #draw the screen elements
             self.screen.blit(self.screen, (100, 100))
-            # 7 - update the screen
+            #update the screen
             pygame.display.flip()
             # 8 - loop through the events
             for event in pygame.event.get():
@@ -47,8 +47,7 @@ class ConcreteGame(GameTemplate):
         super(ConcreteGame, self).draw()
         for i in self.gameobjects:
             pygame.draw.circle(self.screen, constants.GREEN, (400, 300, 10, 10), (100))
-            pygame.display.flip()
-            pygame.display.update()
+            pygame.surface.Surface.blit(self.screen, (300, 600), None, 0)
 
     def run(self):
         '''need documentation'''
