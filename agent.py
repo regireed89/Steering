@@ -3,17 +3,22 @@ import vectormath
 from vectormath import Vector2
 import pygame
 import constants
-
+if __name__ == '__main__':
+    import main as Main
+    Main.main()
 
 class Agent(object):
     '''Agent'''
 
     def __init__(self):
-        self.position = Vector2(0, 0)
-        self.velocity = Vector2(1, 0)
+        self.position = Vector2(60, 0)
+        self.velocity = Vector2(10, 0)
         self.maxvelocity = 10
-        self.force = Vector2(0, 0)
+        self.force = Vector2(10, 0)
         self.heading = Vector2(0, 0)
+        self.surface = pygame.Surface((75, 50), pygame.SRCALPHA)
+        points = [(0, 0), (75, 25), (0, 50), (0, 0)]
+        pygame.draw.lines(self.surface, constants.RED, False, points, 1)
 
     def seek(self, target):
         '''seek'''
@@ -24,12 +29,8 @@ class Agent(object):
 
     def add_force(self):
         '''force'''
-        self.position = (self.position.add_vectors(self.velocity))
-        self.velocity = (self.velocity.add_vectors(self.force))
 
     def draw(self, screen):
         '''draw object'''
-        points = [(50, 50), (50, 100), (150, 75), (50, 50)]
-        pygame.draw.lines(screen, constants.GREEN, False, points, 1)
-        pygame.Surface.blit(screen, (0, 0), None, 0)
+        screen.blit(self.surface, self.position.vec, None, 0)
 

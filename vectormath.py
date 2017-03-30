@@ -9,6 +9,7 @@ class Vector2(object):
         '''init'''
         self.x = x
         self.y = y
+        self.vec = (self.x, self.y)
 
     def magnitude(self):
         '''magnitude'''
