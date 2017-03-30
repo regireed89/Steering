@@ -10,7 +10,8 @@ class GameTemplate(object):
 
     def __init__(self):
         '''abc'''
-        pygame.init()    
+        pygame.init()
+        self.surface = pygame.display.set_mode((constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT))
 
     def startup(self):
         '''do startup routines'''
@@ -18,12 +19,13 @@ class GameTemplate(object):
 
     def update(self):
         '''input and time'''
-        
+        #pygame.time.Clock.tick(0)
+
         return True
 
     def draw(self):
-        pygame.display.flip()
         '''base draw'''
+        pygame.display.flip()
 
     def shutdown(self):
         '''shutdown the game properly'''

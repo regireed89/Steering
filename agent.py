@@ -29,8 +29,7 @@ class Agent(object):
 
     def draw(self, screen):
         '''draw object'''
-        points = [(100, 100), (100, 200), (200, 150), (100, 100)]
+        points = [(50, 50), (50, 100), (150, 75), (50, 50)]
         pygame.draw.lines(screen, constants.GREEN, False, points, 1)
-        
-
+        pygame.Surface.blit(screen, (0, 0), None, 0)
 

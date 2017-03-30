@@ -12,10 +12,8 @@ class ConcreteGame(GameTemplate):
     def __init__(self, name):
         '''need documentation'''
         super(ConcreteGame, self).__init__()
-        self.surface = pygame.display.set_mode((constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT))
         self.name = name
         self.gameobjects = []
-            
 
     def addtobatch(self, gameobject):
         '''add gameobjects to this game'''
@@ -26,10 +24,9 @@ class ConcreteGame(GameTemplate):
         if not super(ConcreteGame, self).update():
             return False
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:            
-                pygame.quit()            
+            if event.type == pygame.QUIT:
+                pygame.quit()
         return True
-
 
     def draw(self):
         '''draw all gameobjects added to this game'''
