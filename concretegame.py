@@ -19,7 +19,7 @@ class ConcreteGame(GameTemplate):
         self.name = name
         self.gameobjects = []
         self.target = agent.Agent()
-        self.target.position = vectormath.Vector2(pygame.mouse.get_pos())
+        self.target.position = 
 
     def addtobatch(self, gameobject):
         '''add gameobjects to this game'''

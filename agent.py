@@ -11,7 +11,7 @@ class Agent(object):
     '''Agent'''
 
     def __init__(self):
-        self.position = Vector2(60, 0)
+        self.position = Vector2(0, 0)
         self.velocity = Vector2(10, 0)
         self.maxvelocity = 10
         self.force = Vector2(10, 0)

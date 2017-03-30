@@ -26,7 +26,7 @@ class GameTemplate(object):
 
     def update(self):
         '''input and time'''
-        self.clock.tick(60)
+        
         return True
 
     def draw(self):
