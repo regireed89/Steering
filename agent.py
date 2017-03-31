@@ -22,7 +22,7 @@ class Agent(object):
 
     def seek(self, target):
         '''seek'''
-        distance = self.position.distance(target.position)
+        distance = target.position.distance(self.position)
         normdistance = distance.normalize()
         scaledis = normdistance.scalarmult(self.maxvelocity)
         return scaledis.sub_vectors(self.velocity)

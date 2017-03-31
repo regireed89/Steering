@@ -19,7 +19,7 @@ class ConcreteGame(GameTemplate):
         self.name = name
         self.gameobjects = []
         self.target = agent.Agent()
-        self.target.position = 
+        
 
     def addtobatch(self, gameobject):
         '''add gameobjects to this game'''
@@ -33,11 +33,9 @@ class ConcreteGame(GameTemplate):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-        for event in pygame.event.get():
-            if event.type == pygame.K_s:
-                for i in self.gameobjects:
-                    i.seek(self.target)
-                    i.draw(self.screen)
+        self.target.position = pygame.mouse.get_pos()
+        for obj in self.gameobjects:
+            obj.seek(self.target)
         return True
 
     def draw(self):
