@@ -33,7 +33,7 @@ class ConcreteGame(GameTemplate):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-        self.target.position = pygame.mouse.get_pos()
+        self.target.position = vectormath.Vector2(pygame.mouse.get_pos[0], pygame.mouse.get_pos[1])
         for obj in self.gameobjects:
             obj.seek(self.target)
         return True
