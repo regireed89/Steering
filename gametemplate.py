@@ -14,12 +14,14 @@ class GameTemplate(object):
 
     def __init__(self):
         '''abc'''
-        pygame.init()
+        pygame.init()        
+        self._fps = 30
         self.clock = pygame.time.Clock()
         self.screen = pygame.display.set_mode((constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT))
         self.surface = pygame.Surface(self.screen.get_size()).convert()
         self.surface.fill((0, 0, 0))
         
+
     def startup(self):
         '''do startup routines'''
         return True
@@ -36,3 +38,4 @@ class GameTemplate(object):
 
     def shutdown(self):
         '''shutdown the game properly'''
+        pygame.quit()

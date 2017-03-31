@@ -18,7 +18,10 @@ class ConcreteGame(GameTemplate):
         super(ConcreteGame, self).__init__()
         self.name = name
         self.gameobjects = []
-        self.target = agent.Agent()
+        self.deltatime = 0
+        self.fps = 30
+        milliseconds = self.clock.tick(self._fps)
+        self._deltatime = milliseconds / 1000.0
         
 
     def addtobatch(self, gameobject):
@@ -27,16 +30,19 @@ class ConcreteGame(GameTemplate):
 
     def update(self):
         '''update this games logic'''
-        self.clock.tick(60)
+        milliseconds = self.clock.tick(self._fps)
+        self._deltatime = milliseconds / 1000.0
         if not super(ConcreteGame, self).update():
             return False
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
-        self.target.position = vectormath.Vector2(pygame.mouse.get_pos[0], pygame.mouse.get_pos[1])
-        for obj in self.gameobjects:
-            obj.seek(self.target)
+            if event.type == pygame.KEYDOWN:
+                pass
+        for i in self.gameobjects:
+            i.update(self._deltatime)
         return True
+
 
     def draw(self):
         '''draw all gameobjects added to this game'''
