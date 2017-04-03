@@ -22,8 +22,10 @@ class Agent(object):
         self.surface.fill((0, 0, 0))
         points = [(0, 0), (75, 25), (0, 50), (0, 0)]
         pygame.draw.lines(self.surface, constants.RED, False, points, 1)
-        # self.targ = Agent()
-        # self.targ.position = Vector2(pygame.mouse.get_pos())
+        self.Seek = False
+        self.Flee = False
+        self.Wander = False
+        self.targetagent = None
         # radius = 1
         # distance = 1
 
@@ -66,14 +68,16 @@ class Agent(object):
     def draw(self, screen):
         '''draw object'''
         screen.blit(self.surface, self.position.vec, None, 0)
-        
 
     def update(self, deltatime):
-        '''update'''        
+        '''update'''
+        if self.Seek is True:
+            self.add_force(self.seek(self.targetagent), deltatime)
+        if self.Flee is True:
+            self.add_force(self.flee(self.targetagent), deltatime)
         self.acceleration = self.force * (1 / self.mass)
         self.velocity = self.velocity + self.acceleration * deltatime
         self.position = self.position + self.velocity * deltatime
-        
 
 if __name__ == '__main__':
     import main as Main
