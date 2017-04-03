@@ -46,6 +46,8 @@ class ConcreteGame(GameTemplate):
                         i.targetagent = self.target
                         i.Seek = True
                         i.update(self.deltatime)
+            if event.type == pygame.MOUSEMOTION:
+                print "mouse at (%d, %d)" % event.pos
         return True
 
 
