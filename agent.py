@@ -63,7 +63,6 @@ class Agent(object):
         if self.velocity.magnitude > 20:
             self.velocity = self.velocity.scalarmult(1/20)
         self.position = self.position.add_vectors(self.velocity)
-        return self.position
 
     def draw(self, screen):
         '''draw object'''
