@@ -20,7 +20,6 @@ class GameTemplate(object):
         self.screen = pygame.display.set_mode((constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT))
         self.surface = pygame.Surface(self.screen.get_size()).convert()
         self.surface.fill((0, 0, 0))
-        
 
     def startup(self):
         '''do startup routines'''
