@@ -5,9 +5,6 @@ import agent
 import pygame
 import constants
 import vectormath
-if __name__ == '__main__':
-    import main as Main
-    Main.main()
 
 
 class ConcreteGame(GameTemplate):
@@ -18,12 +15,7 @@ class ConcreteGame(GameTemplate):
         super(ConcreteGame, self).__init__()
         self.name = name
         self.gameobjects = []
-        self.deltatime = 0
-        self.fps = 30
-        milliseconds = self.clock.tick(self._fps)
-        self._deltatime = milliseconds / 1000.0
         self.target = agent.Agent()
-        
 
     def addtobatch(self, gameobject):
         '''add gameobjects to this game'''
@@ -31,25 +23,37 @@ class ConcreteGame(GameTemplate):
 
     def update(self):
         '''update this games logic'''
-        milliseconds = self.clock.tick(self._fps)
-        self._deltatime = milliseconds / 1000.0
         if not super(ConcreteGame, self).update():
             return False
         self.target.position = vectormath.Vector2(pygame.mouse.get_pos())
-        events = pygame.event.get()
-        for event in events:
-            if event.type == pygame.QUIT:
-                pygame.quit()
+        for event in self._events:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_s:
                     for i in self.gameobjects:
                         i.targetagent = self.target
+                        i.Wander = False
+                        i.Flee = False
                         i.Seek = True
-                        i.update(self.deltatime)
+                        print "agent at (%d, %d)" % i.position.vec
+                if event.key == pygame.K_f:
+                    for i in self.gameobjects:
+                        i.targetagent = self.target
+                        i.Wander = False
+                        i.Seek = False
+                        i.Flee = True
+                        print "agent at (%d, %d)" % i.position.vec
+                if event.key == pygame.K_w:
+                    for i in self.gameobjects:
+                        i.Seek = False
+                        i.Flee = False
+                        i.Wander = True
+                        print "agent at (%d, %d)" % i.position.vec
             if event.type == pygame.MOUSEMOTION:
                 print "mouse at (%d, %d)" % event.pos
+        for i in self.gameobjects:
+            i.update(self.deltatime)
+        print self.deltatime
         return True
-
 
     def draw(self):
         '''draw all gameobjects added to this game'''
@@ -63,3 +67,8 @@ class ConcreteGame(GameTemplate):
             while self.update():
                 self.draw()
         super(ConcreteGame, self).shutdown()
+
+
+if __name__ == '__main__':
+    import main as Main
+    Main.main()

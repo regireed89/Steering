@@ -10,18 +10,19 @@ class Vector2(object):
         self.x = x
         self.y = y
         self.vec = (self.x, self.y)
-
+    @property
     def magnitude(self):
         '''magnitude'''
         return math.sqrt((self.x * self.x) + (self.y * self.y))
 
+    @property
     def normalize(self):
         '''normalize'''
-        return Vector2((self.x / self.magnitude(), self.y / self.magnitude()))
+        return Vector2((self.x / self.magnitude, self.y / self.magnitude))
 
     def distance(self, vector2):
         '''distance'''
-        return Vector2((self.x - vector2.x, self.x - vector2.y))
+        return Vector2((self.x - vector2.x, self.y - vector2.y))
 
     def add_vectors(self, vector):
         '''add vetors'''
@@ -43,6 +44,6 @@ class Vector2(object):
 
     def __mul__(self, scalar):
         return self.scalarmult(scalar)
-    
+
     def __sub__(self, other):
         return self.sub_vectors(other)
