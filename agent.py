@@ -11,9 +11,9 @@ class Agent(object):
     '''Agent'''
 
     def __init__(self):
-        self.position = Vector2((400, 300))
-        self.velocity = Vector2((100, 0))
-        self.maxvelocity = 90.0
+        self.position = Vector2((0, 300))
+        self.velocity = Vector2((200, 0))
+        self.maxvelocity = 150.0
         self.mass = 1
         self.force = Vector2((0, 0))
         self.heading = self.velocity.normalize
@@ -28,7 +28,7 @@ class Agent(object):
         self.Wander = False
         self.targetagent = None
         self.radius = 10
-        self.distance = 1
+        self.distance = 5
 
     def seek(self, target):
         '''seek'''
@@ -53,7 +53,7 @@ class Agent(object):
         center_circle = center_circle.scalarmult(distance)
         displacement = Vector2((0, 1))
         dis = displacement.scalarmult(radius)
-        wander_angle = 0
+        wander_angle = 10
         wander_angle = wander_angle + (random.randrange(0, 10) * 1) - (1 * .5)
         dis.x = math.cos(wander_angle) * dis.magnitude
         dis.y = math.sin(wander_angle) * dis.magnitude

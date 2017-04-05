@@ -84,7 +84,7 @@ class GameTemplate(object):
 
     def draw_text(self, text):
         """Center text in window"""
-        surface = self.font.render(text, True, (0, 0, 0))
+        surface = self.font.render(text, True, (0, 255, 0))
         self.screen.blit(surface, (25, 25))
 
 
