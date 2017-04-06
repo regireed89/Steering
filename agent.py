@@ -9,17 +9,16 @@ import math
 
 class Agent(object):
     '''Agent'''
-
     def __init__(self):
         self.position = Vector2((0, 300))
-        self.velocity = Vector2((200, 0))
-        self.maxvelocity = 150.0
+        self.velocity = Vector2((300, 0))
+        self.maxvelocity = 250.0
         self.mass = 1
         self.force = Vector2((0, 0))
         self.heading = self.velocity.normalize
         self.direction = Vector2((0, 0))
         self.acceleration = Vector2((0, 0))
-        self.surface = pygame.Surface((75, 50), pygame.SRCALPHA)
+        self.surface = pygame.Surface((100, 50), pygame.SRCALPHA)
         self.surface.fill((0, 0, 0))
         points = [(0, 0), (75, 25), (0, 50), (0, 0)]
         pygame.draw.lines(self.surface, constants.RED, False, points, 1)

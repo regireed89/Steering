@@ -11,13 +11,13 @@ class GameTemplate(object):
         '''abc'''
         self._name = ""
         pygame.init()
-        self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+        self.screen = pygame.display.set_mode((1200, 1000))
         self._clock = pygame.time.Clock()
         self._fps = 30
         self._playtime = 0.0
         self.deltatime = 0.0
         self._background = pygame.Surface(
-            (SCREEN_WIDTH, SCREEN_HEIGHT), pygame.SRCALPHA)
+            (1200, 1000), pygame.SRCALPHA)
 
         self._background.fill((0, 0, 0))
         self._gamestates = {}
@@ -27,6 +27,7 @@ class GameTemplate(object):
         self._gamestates["quit"] = []
         self._currentstate = "init"
         self._events = pygame.event.get()
+        pygame.font.init()
         self.font = pygame.font.SysFont('mono', 24, bold=True)
     def _set_state(self, value):
         '''set state of the game'''
@@ -73,7 +74,7 @@ class GameTemplate(object):
     def draw(self):
         '''need docstring'''
         self.draw_text("FPS: {:6.3}{}PLAYTIME: {:6.3} SECONDS".format(
-            self._clock.get_fps(), " " * 5, self._playtime))
+            self._clock.get_fps(), " " * 5, self._playtime)) 
 
         pygame.display.flip()
         self.screen.blit(self._background, (0, 0))
@@ -86,6 +87,9 @@ class GameTemplate(object):
         """Center text in window"""
         surface = self.font.render(text, True, (0, 255, 0))
         self.screen.blit(surface, (25, 25))
+
+
+        
 
 
 if __name__ == '__main__':

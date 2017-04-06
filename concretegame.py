@@ -16,6 +16,8 @@ class ConcreteGame(GameTemplate):
         self.name = name
         self.gameobjects = []
         self.target = agent.Agent()
+        pygame.font.init()
+        self.font = pygame.font.SysFont('mono', 24, bold=True)
 
     def addtobatch(self, gameobject):
         '''add gameobjects to this game'''
@@ -60,6 +62,9 @@ class ConcreteGame(GameTemplate):
         super(ConcreteGame, self).draw()
         for i in self.gameobjects:
             i.draw(self.screen)
+            velo = "velocity:{}".format(i.velocity)
+            v = self.font.render(velo, True, (255, 255, 255))
+            self.surface.blit(v, (0, 0))
 
     def run(self):
         '''need documentation'''
