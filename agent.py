@@ -67,6 +67,8 @@ class Agent(object):
     def draw(self, screen):
         '''draw object'''
         screen.blit(self.surface, self.position.vec)
+        copy = pygame.transform.rotate(self.surface, -1 * (180 * math.atan2(self.heading[1], self.heading[0])) / math.pi)
+        screen.blit(copy, self.position)
 
     def update(self, deltatime):
         '''update'''
