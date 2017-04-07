@@ -64,7 +64,7 @@ class ConcreteGame(GameTemplate):
             i.draw(self.screen)
             velo = "velocity:{}".format(i.velocity)
             v = self.font.render(velo, True, (255, 255, 255))
-            self.surface.blit(v, (0, 0))
+            self.screen.blit(v, (0, 0))
 
     def run(self):
         '''need documentation'''
