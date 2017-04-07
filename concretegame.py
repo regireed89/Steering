@@ -73,7 +73,7 @@ class ConcreteGame(GameTemplate):
             self.screen.blit(h, (0, 40))
             force = "force:{}".format(i.force.vec)
             f = self.font.render(force, True, (255, 255, 255))
-            self.screen.blit(v, (0, 60))
+            self.screen.blit(f, (0, 60))
 
     def run(self):
         '''need documentation'''
