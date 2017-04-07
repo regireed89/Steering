@@ -62,9 +62,18 @@ class ConcreteGame(GameTemplate):
         super(ConcreteGame, self).draw()
         for i in self.gameobjects:
             i.draw(self.screen)
-            velo = "velocity:{}".format(i.velocity)
+            velo = "velocity:{}".format(i.velocity.vec)
             v = self.font.render(velo, True, (255, 255, 255))
             self.screen.blit(v, (0, 0))
+            pos = "position:{}".format(i.position.vec)
+            p = self.font.render(pos, True, (255, 255, 255))
+            self.screen.blit(p, (0, 20))
+            head = "heading:{}".format(i.heading.vec)
+            h = self.font.render(head, True, (255, 255, 255))
+            self.screen.blit(h, (0, 40))
+            force = "force:{}".format(i.force.vec)
+            f = self.font.render(force, True, (255, 255, 255))
+            self.screen.blit(v, (0, 60))
 
     def run(self):
         '''need documentation'''
