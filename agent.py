@@ -26,8 +26,9 @@ class Agent(object):
         self.Flee = False
         self.Wander = False
         self.targetagent = None
-        self.radius = 10
+        self.radius = 100
         self.distance = 5
+        self.wander_angle = 10
 
     def seek(self, target):
         '''seek'''
@@ -52,10 +53,9 @@ class Agent(object):
         center_circle = center_circle.scalarmult(distance)
         displacement = Vector2((0, 1))
         dis = displacement.scalarmult(radius)
-        wander_angle = 10
-        wander_angle = wander_angle + (random.randrange(0, 10) * 1) - (1 * .5)
-        dis.x = math.cos(wander_angle) * dis.magnitude
-        dis.y = math.sin(wander_angle) * dis.magnitude
+        self.wander_angle = self.wander_angle + (random.randrange(0, 10) * 1) - (1 * .5)
+        dis.x = math.cos(self.wander_angle) * dis.magnitude
+        dis.y = math.sin(self.wander_angle) * dis.magnitude
         wanderforce = center_circle + dis
         return wanderforce
 

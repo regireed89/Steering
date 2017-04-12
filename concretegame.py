@@ -74,6 +74,9 @@ class ConcreteGame(GameTemplate):
             force = "force:{}".format(i.force.vec)
             f = self.font.render(force, True, (255, 255, 255))
             self.screen.blit(f, (0, 60))
+            wand = "wander_angle:{}".format(i.wander_angle)
+            w = self.font.render(wand, True, (255, 255, 255))
+            self.screen.blit(w, (0, 100))
 
     def run(self):
         '''need documentation'''
