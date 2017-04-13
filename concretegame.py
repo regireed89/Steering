@@ -50,8 +50,6 @@ class ConcreteGame(GameTemplate):
                         i.Flee = False
                         i.Wander = True
                         print "agent at (%d, %d)" % i.position.vec
-            if event.type == pygame.MOUSEMOTION:
-                print "mouse at (%d, %d)" % event.pos
         for i in self.gameobjects:
             i.update(self.deltatime)
         print self.deltatime
@@ -76,7 +74,7 @@ class ConcreteGame(GameTemplate):
             self.screen.blit(f, (0, 60))
             wand = "wander_angle:{}".format(i.wander_angle)
             w = self.font.render(wand, True, (255, 255, 255))
-            self.screen.blit(w, (0, 100))
+            self.screen.blit(w, (0, 80))
 
     def run(self):
         '''need documentation'''
